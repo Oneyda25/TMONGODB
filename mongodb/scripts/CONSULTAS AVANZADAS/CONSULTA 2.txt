@@ -1,0 +1,3 @@
+- Contar cuántas ventas fueron realizadas por el empleado con ID 1
+
+db.ventas.countDocuments({ "empleado_id": 1 })

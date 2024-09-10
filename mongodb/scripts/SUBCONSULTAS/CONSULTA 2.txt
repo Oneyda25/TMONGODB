@@ -1,0 +1,12 @@
+- Obtener el nombre de los empleados que han realizado ventas superiores a $9.00
+
+db.ventas.aggregate([
+  { $match: { "total": { $gt: 9.00 } }},
+  { $lookup: {
+    from: "empleados",
+    localField: "empleado_id",
+    foreignField: "_id",
+    as: "detalles_empleado"
+  }},
+  { $project: { "detalles_empleado.nombre": 1, _id: 0 } }
+])

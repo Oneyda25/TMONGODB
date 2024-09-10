@@ -1,0 +1,3 @@
+- Eliminar una venta
+
+db.ventas.deleteOne({ "_id": 3 })

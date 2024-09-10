@@ -1,0 +1,17 @@
+- Obtener todas las películas que han sido vendidas y mostrar los nombres de los clientes que las compraron
+
+db.ventas.aggregate([
+  { $lookup: {
+    from: "peliculas",
+    localField: "pelicula_id",
+    foreignField: "_id",
+    as: "detalles_pelicula"
+  }},
+  { $lookup: {
+    from: "cliente",
+    localField: "cliente_id",
+    foreignField: "_id",
+    as: "detalles_cliente"
+  }},
+  { $project: { "detalles_pelicula.titulo": 1, "detalles_cliente.nombre": 1, _id: 0 } }
+])

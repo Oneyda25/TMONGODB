@@ -1,0 +1,3 @@
+- Consultar todas las películas cuyo género sea Ciencia Ficción y cuyo precio sea mayor a 9.00:
+
+db.peliculas.find({ "genero": "Ciencia Ficción", "precio": { $gt: 9.00 } })

@@ -1,0 +1,5 @@
+- Agrupar las ventas por cliente_id y calcular el total gastado por cada cliente:
+
+db.ventas.aggregate([
+  { $group: { _id: "$cliente_id", total_gastado: { $sum: "$total" } } }
+])

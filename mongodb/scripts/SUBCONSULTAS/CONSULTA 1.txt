@@ -1,0 +1,18 @@
+- Listar los clientes que han comprado la película con título "Matrix"
+
+db.ventas.aggregate([
+  { $lookup: {
+    from: "peliculas",
+    localField: "pelicula_id",
+    foreignField: "_id",
+    as: "detalles_pelicula"
+  }},
+  { $match: { "detalles_pelicula.titulo": "Matrix" }},
+  { $lookup: {
+    from: "cliente",
+    localField: "cliente_id",
+    foreignField: "_id",
+    as: "detalles_cliente"
+  }},
+  { $project: { "detalles_cliente.nombre": 1, _id: 0 } }
+])

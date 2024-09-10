@@ -1,0 +1,3 @@
+- Insertar un nuevo cliente:
+
+db.clientes.insertOne({ "_id": 16, "nombre": "Carlos Mendoza", "email": "carlosm@example.com", "telefono": "9876543210" })
